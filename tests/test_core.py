@@ -37,5 +37,13 @@ class TestIterdict(unittest.TestCase):
         ]
         self.assertEqual(results, expected)
 
+    def test_validation_not_list(self):
+        with self.assertRaises(TypeError):
+            iterdict({"a": "not a list"})
+
+    def test_validation_empty_list(self):
+        with self.assertRaises(ValueError):
+            iterdict({"a": []})
+
 if __name__ == "__main__":
     unittest.main()

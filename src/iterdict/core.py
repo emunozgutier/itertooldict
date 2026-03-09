@@ -6,6 +6,12 @@ class iterdict:
     of values in the input dictionary.
     """
     def __init__(self, data):
+        for key, value in data.items():
+            if not isinstance(value, list):
+                raise TypeError(f"Value for key '{key}' must be a list, got {type(value).__name__}")
+            if len(value) == 0:
+                raise ValueError(f"Value for key '{key}' must have at least one entry")
+        
         self._data = data
         self._keys = list(data.keys())
         self._values = list(data.values())
