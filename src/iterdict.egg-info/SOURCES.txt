@@ -1,0 +1,10 @@
+LICENSE
+README.md
+pyproject.toml
+src/iterdict/__init__.py
+src/iterdict/core.py
+src/iterdict.egg-info/PKG-INFO
+src/iterdict.egg-info/SOURCES.txt
+src/iterdict.egg-info/dependency_links.txt
+src/iterdict.egg-info/top_level.txt
+tests/test_core.py
