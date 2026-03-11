@@ -1,7 +1,22 @@
 import unittest
+from collections import OrderedDict
 from itertooldict import itertooldict
 
 class TestIterdict(unittest.TestCase):
+    def test_ordered_dict(self):
+        data = OrderedDict([("a", [1, 2]), ("b", ["x", "y"])])
+        results = list(itertooldict(data))
+        expected = [
+            {"a": 1, "b": "x"},
+            {"a": 1, "b": "y"},
+            {"a": 2, "b": "x"},
+            {"a": 2, "b": "y"},
+        ]
+        self.assertEqual(results, expected)
+        # Ensure key order is preserved in the yielded dicts
+        for res in results:
+            self.assertEqual(list(res.keys()), ["a", "b"])
+
     def test_basic_product(self):
         data = {"a": [1, 2], "b": ["x", "y"]}
         results = list(itertooldict(data))

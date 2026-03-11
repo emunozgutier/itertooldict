@@ -6,7 +6,8 @@ def itertooldict(data, repeat=1):
     of values in the input dictionary.
 
     Args:
-        data (dict): A dictionary where keys are labels and values are iterables.
+        data (dict): A dictionary where keys are labels and values are iterables. 
+                    `collections.OrderedDict` is preferred for consistent ordering.
         repeat (int): Number of times to repeat the input iterables.
 
     Yields:
