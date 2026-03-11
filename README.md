@@ -12,15 +12,16 @@ pip install itertooldict
 
 ## Usage
 
-`itertooldict` takes a dictionary where values are iterables and yields dictionaries representing their Cartesian product. It behaves exactly like `itertools.product` but for dictionaries.
+`itertooldict` takes a dictionary where values are iterables and yields dictionaries representing their Cartesian product.
 
-> [!TIP]
-> While it works with standard dictionaries in Python 3.7+, using `collections.OrderedDict` is preferred to ensure consistent key ordering across all environments when no `keyorder` is specified.
+> [!IMPORTANT]
+> **`collections.OrderedDict` is the preferred input type.** While standard dictionaries work in modern Python, using `OrderedDict` ensures that the iteration order and dictionary keys remain consistent across all environments.
 
 ```python
 from itertooldict import itertooldict
 from collections import OrderedDict
 
+# Preferred usage with OrderedDict
 data = OrderedDict([
     ("voltage", ["Vmax", "Vmin"]),
     ("temp", ["hot", "cold"])
