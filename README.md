@@ -10,7 +10,7 @@ pip install itertooldict
 
 ## Usage
 
-`itertooldict` takes a dictionary where values are iterables and yields dictionaries representing their Cartesian product.
+`itertooldict` takes a dictionary where values are iterables and yields dictionaries representing their Cartesian product. It behaves exactly like `itertools.product` but for dictionaries.
 
 ```python
 from itertooldict import itertooldict
@@ -30,42 +30,18 @@ for combo in itertooldict(data):
 # {'voltage': 'Vmin', 'temp': 'cold'}
 ```
 
-### Excluding Combinations
+### Repeating the Product
 
-You can use the `.remove()` method to exclude specific combinations or patterns.
+You can use the `repeat` argument to repeat the input iterables, just like `itertools.product`.
 
 ```python
-it = itertooldict(data)
-it.remove({"voltage": "Vmax", "temp": "hot"})
-
-for combo in it:
+data = {"a": [1, 2]}
+for combo in itertooldict(data, repeat=2):
     print(combo)
-# {'voltage': 'Vmax', 'temp': 'cold'}
-# {'voltage': 'Vmin', 'temp': 'hot'}
-# {'voltage': 'Vmin', 'temp': 'cold'}
-```
-
-You can also remove based on partial matches:
-
-### Randomizing Order
-
-You can randomize the order of the generated combinations:
-
-```python
-it = itertooldict(data).random()
-for combo in it:
-    print(combo) # Order will be shuffled
-```
-
-### Updating Key Order
-
-You can specify the order of keys in the resulting dictionaries:
-
-```python
-it = itertooldict(data)
-it.updateKeyOrder(["temp", "voltage"])
-for combo in it:
-    print(combo) # {'temp': 'hot', 'voltage': 'Vmax'}, ...
+# {'a': 1}
+# {'a': 2}
+# {'a': 1}
+# {'a': 2}
 ```
 
 ### Compatibility with list() and enumerate()
