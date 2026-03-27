@@ -24,19 +24,25 @@ from collections import OrderedDict
 # Preferred usage with OrderedDict
 data = OrderedDict([
     ("voltage", ["Vmax", "Vmin"]),
-    ("temp", ["hot", "cold"])
+    ("temp", ["hot", "cold"]),
+    ("humidity", ["low", "high"])
 ])
 
 for combo in productDict(data):
     voltage = combo["voltage"]
     temp = combo["temp"]
-    print(f"Testing {voltage} at {temp}")
+    humidity = combo["humidity"]
+    print(f"Testing {voltage} at {temp} with {humidity} humidity")
 
 # Output:
-# Testing Vmax at hot
-# Testing Vmax at cold
-# Testing Vmin at hot
-# Testing Vmin at cold
+# Testing Vmax at hot with low humidity
+# Testing Vmax at hot with high humidity
+# Testing Vmax at cold with low humidity
+# Testing Vmax at cold with high humidity
+# Testing Vmin at hot with low humidity
+# Testing Vmin at hot with high humidity
+# Testing Vmin at cold with low humidity
+# Testing Vmin at cold with high humidity
 ```
 
 ### Specifying Key Order
