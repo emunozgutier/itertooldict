@@ -28,13 +28,15 @@ data = OrderedDict([
 ])
 
 for combo in productDict(data):
-    print(combo)
+    voltage = combo["voltage"]
+    temp = combo["temp"]
+    print(f"Testing {voltage} at {temp}")
 
 # Output:
-# {'voltage': 'Vmax', 'temp': 'hot'}
-# {'voltage': 'Vmax', 'temp': 'cold'}
-# {'voltage': 'Vmin', 'temp': 'hot'}
-# {'voltage': 'Vmin', 'temp': 'cold'}
+# Testing Vmax at hot
+# Testing Vmax at cold
+# Testing Vmin at hot
+# Testing Vmin at cold
 ```
 
 ### Specifying Key Order
@@ -45,11 +47,11 @@ You can use the `keyorder` argument to specify the order of keys in the resultin
 data = {"a": [1, 2], "b": ["x", "y"]}
 # Iterate with 'b' as the outer loop and 'a' as the inner loop
 for combo in productDict(data, keyorder=["b", "a"]):
-    print(combo)
-# {'b': 'x', 'a': 1}
-# {'b': 'x', 'a': 2}
-# {'b': 'y', 'a': 1}
-# {'b': 'y', 'a': 2}
+    print(f"b={combo['b']}, a={combo['a']}")
+# b=x, a=1
+# b=x, a=2
+# b=y, a=1
+# b=y, a=2
 ```
 
 ### Compatibility with list() and enumerate()
